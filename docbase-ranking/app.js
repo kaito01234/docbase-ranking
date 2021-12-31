@@ -17,15 +17,13 @@ exports.lambdaHandler = async (event, context) => {
     const BASE_URL = "https://api.docbase.io/";
 
     // APIアクセストークン
-    const API_TOKEN =
-      "xxxxxxxxxxxxxxxxxxxxxxx";
+    const API_TOKEN = process.env.API_TOKEN;
 
     // ドメイン
-    const DOMAIN =
-      "xxxxxxxxxxxxxxxxxxxxxxx";
+    const DOMAIN = process.env.DOMAIN;
 
     // 検索条件
-    const SEARCH = encodeURI("group:xxxxxxxxxxxxxxxxx");
+    const SEARCH = encodeURI(`group:${process.env.SEARCH}`);
 
     // 集計結果
     let result = [];
@@ -77,7 +75,8 @@ exports.lambdaHandler = async (event, context) => {
 
     response = {
       statusCode: 200,
-      body: result,
+      body: JSON.stringify(result),
+      isBase64Encoded: false,
     };
   } catch (err) {
     console.log(err);
