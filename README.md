@@ -1,5 +1,13 @@
 # docbase-ranking
 
+```bash
+sam build
+sam local invoke -e .\events\local-event.json
+sam deploy --guided
+```
+
+
+
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - docbase-ranking - Code for the application's Lambda function.
